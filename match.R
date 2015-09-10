@@ -7,13 +7,12 @@ tomap<-read.xlsx(file="tomap.xlsx",1,header=TRUE)
 uniqzip<-read.xlsx("uniqzip.xlsx",1,header=TRUE)
 
 
-i=1
-for(i in 1:3 )
+rows=nrow(uniqzip)
+for(i in 1:rows)
 {
-  zz=i
-  zipall=all[grep(uniqzip[1,zz],all$zip),] ####all available IDs in all possible zip codes #####
+  zipall=all[grep(uniqzip[i,1],all$zip),] ####all available IDs in all possible zip codes #####
 
-  ziptomap=tomap[grep(uniqzip[1,zz],tomap$zip),] ####all zips for which you want to find original ID#####
+  ziptomap=tomap[grep(uniqzip[i,1],tomap$zip),] ####all zips for which you want to find original ID#####
   ziptomap$x=row.names(ziptomap)
 
   ####find phonetic codes based on name for which you want to find original ID#####
